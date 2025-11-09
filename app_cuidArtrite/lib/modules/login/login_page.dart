@@ -1,3 +1,4 @@
+import 'package:app_osteoartrite/modules/login/cadastro_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -79,6 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF13574C), // Cor verde do AppBar
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -91,6 +93,18 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  TextButton(
+                    onPressed:(){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CadastroPage()),
+                      );},
+                      child: const Text(
+                      'Cadastre-se',
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),
+                      decoration: TextDecoration.underline,
+                      )),
+                    )
                 ],
               ),
             ),
