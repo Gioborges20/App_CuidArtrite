@@ -59,6 +59,25 @@ class _telaPrincipal extends State<TelaPrincipalPage> {
                             fontWeight: FontWeight.bold,
                             color: const Color.fromARGB(255, 255, 255, 255),)),
                         ),
+                        Center(
+                          child: SizedBox(
+                              width:60,
+                              height:60,
+                              child: Image(image: AssetImage(
+                              'assets/ImageRelatoDiario.png'
+                              ),),
+                            ),
+                            ),
+                      Padding(
+                        padding: EdgeInsets.all(25),
+                        child: Text(
+                          'Perguntas sobre\nsua dor e intensidade.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                       ],
                     ),
                   ),
