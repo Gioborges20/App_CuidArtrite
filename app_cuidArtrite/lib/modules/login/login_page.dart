@@ -1,4 +1,5 @@
 import 'package:app_osteoartrite/modules/login/cadastro_page.dart';
+import 'package:app_osteoartrite/modules/login/tela_principal_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -78,7 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                         MaterialPageRoute(builder: (context) => TelaPrincipalPage()),
+                        );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF13574C), // Cor verde do AppBar
                       shape: RoundedRectangleBorder(
