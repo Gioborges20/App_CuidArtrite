@@ -4,10 +4,10 @@ class TelaPrincipalPage extends StatefulWidget {
   const TelaPrincipalPage({super.key});
 
   @override
-  State<TelaPrincipalPage> createState() => _telaPrincipal();
+  State<TelaPrincipalPage> createState() => _TelaPrincipal();
 }
 
-class _telaPrincipal extends State<TelaPrincipalPage> {
+class _TelaPrincipal extends State<TelaPrincipalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +23,7 @@ class _telaPrincipal extends State<TelaPrincipalPage> {
           padding: EdgeInsets.all(8),
           child: Image(
             image: AssetImage('assets/logo.png'),
-            width: 40,
+            width: 30,
           ),
         ),
         backgroundColor: Color(0xFF13574C),
@@ -36,14 +36,14 @@ class _telaPrincipal extends State<TelaPrincipalPage> {
                 padding: EdgeInsets.only(top: 24), // Margem superior
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 110, 196, 218),
+                    color: Color.fromARGB(255, 122, 181, 196),
                     border: Border.all(
                       color: const Color.fromARGB(23, 100, 100, 100),
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  width: 200,
+                  width: 300,
                   child: Padding(
                     padding: EdgeInsets.all(25),
                     child: Column(
@@ -61,10 +61,10 @@ class _telaPrincipal extends State<TelaPrincipalPage> {
                         ),
                         Center(
                           child: SizedBox(
-                              width:60,
-                              height:60,
+                              width:80,
+                              height:80,
                               child: Image(image: AssetImage(
-                              'assets/ImageRelatoDiario.png'
+                              'assets/ImageRelatoDiario.png', 
                               ),),
                             ),
                             ),
