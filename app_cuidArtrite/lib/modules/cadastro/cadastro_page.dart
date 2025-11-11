@@ -15,13 +15,7 @@ class _CadastroPageState extends State<CadastroPage>{
   String? _sexoSelecionado;
   String? _diagnosticoSelecionado;
 
-  State<CadastroPage> createState() => _cadastroPageState();
-}
-
-const List<String>  list = <String>['Masculino', 'Feminino', 'Outro'];
-
-class _cadastroPageState extends State<CadastroPage>{
-  String? _sexoSelecionado;
+  State<CadastroPage> createState() => _CadastroPageState();
 
   
   @override
