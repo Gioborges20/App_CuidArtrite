@@ -14,6 +14,15 @@ const List<String> diagnostico = <String>['Osteoartrite de Joelho', 'Osteoartrit
 class _CadastroPageState extends State<CadastroPage>{
   String? _sexoSelecionado;
   String? _diagnosticoSelecionado;
+
+  State<CadastroPage> createState() => _cadastroPageState();
+}
+
+const List<String>  list = <String>['Masculino', 'Feminino', 'Outro'];
+
+class _cadastroPageState extends State<CadastroPage>{
+  String? _sexoSelecionado;
+
   
   @override
   Widget build(BuildContext context){
@@ -114,8 +123,7 @@ class _CadastroPageState extends State<CadastroPage>{
                       if(value.length < 15){
                         return 'Número de telefone incompleto.';
                       }
-                      return null;
-              
+                      return null;              
                     },
                   ),
                   Padding(
