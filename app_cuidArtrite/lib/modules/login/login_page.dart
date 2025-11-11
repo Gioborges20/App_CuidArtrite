@@ -1,5 +1,5 @@
-import 'package:app_osteoartrite/modules/login/cadastro_page.dart';
-import 'package:app_osteoartrite/modules/login/tela_principal_page.dart';
+import 'package:app_osteoartrite/modules/cadastro/cadastro_page.dart';
+import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {

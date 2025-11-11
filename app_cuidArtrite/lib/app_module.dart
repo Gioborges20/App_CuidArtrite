@@ -1,5 +1,5 @@
 import 'package:app_osteoartrite/modules/login/login_module.dart';
-import 'package:app_osteoartrite/modules/login/cadastro_module.dart';
+import 'package:app_osteoartrite/modules/cadastro/cadastro_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module {
