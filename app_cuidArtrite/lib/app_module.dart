@@ -7,6 +7,7 @@ class AppModule extends Module {
   void routes(RouteManager r) {
     // Definindo as rotas do app
     r.module('/', module: LoginModule()); // Rota inicial para a página de login
-    r.module('/cadastro', module: CadastroModule()); // Rota para a página de cadastro
+    r.module('/cadastro', module: CadastroModule()); 
+    r.module('/module/telaPrincipal_past/tela_principal_page', module: CadastroModule());// Rota para a página de cadastro
   }
 }
