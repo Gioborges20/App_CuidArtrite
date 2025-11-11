@@ -34,30 +34,30 @@ class _CadastroPageState extends State<CadastroPage>{
       ),
       body: SingleChildScrollView(
         child: Center(
-        child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsetsGeometry.all(16),
-            child: Text(
-              'Cadastro',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+          child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsetsGeometry.all(16),
+              child: Text(
+                'Cadastro',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              ),
+          const SizedBox(height: 22),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: const Color.fromARGB(23, 236, 0, 0),
+                width: 1.0,),
+            borderRadius: BorderRadius.circular(8.0),
             ),
-            ),
-        const SizedBox(height: 22),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: const Color.fromARGB(23, 236, 0, 0),
-              width: 1.0,),
-          borderRadius: BorderRadius.circular(8.0),
-          ),
-          width: 330,
-          child: Padding(
-            padding: EdgeInsets.all(25),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+            width: 330,
+            child: Padding(
+              padding: EdgeInsets.all(25),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
 
                 children: [
                   Padding(
