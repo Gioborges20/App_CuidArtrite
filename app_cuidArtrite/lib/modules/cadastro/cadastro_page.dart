@@ -12,7 +12,7 @@ const List<String>  tipoSexo = <String>['Masculino', 'Feminino', 'Outro'];
 
 class _CadastroPageState extends State<CadastroPage>{
   String? _sexoSelecionado;
-
+  
   @override
   Widget build(BuildContext context){
     return Scaffold(
