@@ -12,7 +12,7 @@ const List<String>  tipoSexo = <String>['Masculino', 'Feminino', 'Outro'];
 
 class _CadastroPageState extends State<CadastroPage>{
   String? _sexoSelecionado;
-  
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -127,11 +127,6 @@ class _CadastroPageState extends State<CadastroPage>{
                       hintText: 'exemplo: aaaabbb@hotmail.com',
                       border: OutlineInputBorder(),
                     )
-                  ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: EdgeInsetsGeometry.all(15),
-                    child: Text('Registro de diagnóstico', style: TextStyle(fontSize: 18)),
                   ),
                   const SizedBox(height: 15),
                   Padding(
