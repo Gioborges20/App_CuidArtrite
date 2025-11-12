@@ -78,6 +78,19 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                           ),
                         ),
                       ),
+                      ElevatedButton(
+                        onPressed: () {
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                        child: Text(
+                          'Iniciar Relato',
+                          style: TextStyle(
+                            color: Color(0xFF13574C),
+                          ),
+                        ),
+                      ),
                       ],
                     ),
                   ),
