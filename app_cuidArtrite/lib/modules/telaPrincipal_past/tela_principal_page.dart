@@ -47,55 +47,164 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                   child: Padding(
                     padding: EdgeInsets.all(25),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsGeometry.all(15),
-                          child: Text(
-                            'Relato Diário', 
-                            style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 255, 255, 255),)),
-                        ),
                         Center(
-                          child: SizedBox(
-                              width:80,
-                              height:80,
-                              child: Image(image: AssetImage(
-                              'assets/ImageRelatoDiario.png', 
-                              ),),
+                          child: Text(
+                            'Relato Diário',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 255, 255, 255),
                             ),
-                            ),
-                      Padding(
-                        padding: EdgeInsets.all(25),
-                        child: Text(
-                          'Perguntas sobre\nsua dor e intensidade.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
                           ),
                         ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                        const SizedBox(height: 12),
+                        SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset('assets/ImageRelatoDiario.png'),
                         ),
-                        child: Text(
-                          'Iniciar Relato',
-                          style: TextStyle(
-                            color: Color(0xFF13574C),
+                        const SizedBox(height: 16),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            'Perguntas sobre\nsua dor e intensidade.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
+                        const SizedBox(height: 16),
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            ),
+                            child: Text(
+                              'Iniciar Relato',
+                              style: TextStyle(
+                                color: Color(0xFF13574C),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
+             Padding(
+                padding: EdgeInsets.only(top: 24), 
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 221, 220, 220),
+                    border: Border.all(
+                      color: const Color.fromARGB(23, 100, 100, 100),
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  width: 400,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(197, 170, 169, 169),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                        child: Center(
+                          child: Text(
+                            'Exerça Práticas Físicas!',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 49, 49, 49),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(25),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text('A prática de exercícios físicos pode ser numa grande aliada contra a osteoartrite.'
+                              '\nAo executá-las, fortalecemos nossas articulações e criamos uma “barreira” contra lesões.',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(fontSize: 18)
+                              )
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(73, 155, 154, 154),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                width: 400,
+                child: Column(
+                  crossAxisAlignment:CrossAxisAlignment.end,
+                  children: [
+                    Column(
+                        children: [ 
+                          Text(
+                            'Aliviando as dores',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 49, 49, 49),
+                            ),
+                          ),
+
+                          SizedBox(height: 4),
+
+                          Text('Asista aos vídeos!',
+                          style: TextStyle(
+                            fontSize: 15, 
+                            color: Color.fromARGB(255, 117, 117, 117))
+                          ),
+
+                          ElevatedButton(
+                            onPressed: (){}, 
+                             style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            ),
+                            child: Text(
+                              'Iniciar',
+                              style: TextStyle(
+                                color: Color(0xFF13574C),
+                              ),
+                            ),
+                            ),
+                        ],
+                    ),
+                  ],
+
+                ),
+                ),
+                ),
             ],
           ),
         ),
