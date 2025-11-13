@@ -1,3 +1,4 @@
+import 'package:app_osteoartrite/modules/aliviaDores_page.dart';
 import 'package:flutter/material.dart';
 
 class TelaPrincipalPage extends StatefulWidget {
@@ -72,7 +73,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(
-                            'Perguntas sobre\nsua dor e intensidade.',
+                            'Perguntas sobre sua dor e intensidade.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
@@ -159,16 +160,15 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Container(
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(73, 155, 154, 154),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                width: 400,
-                child: Column(
-                  crossAxisAlignment:CrossAxisAlignment.end,
-                  children: [
-                    Column(
-                        children: [ 
+                  padding: EdgeInsets.all(12.0),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(73, 155, 154, 154),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  width: 400,
+                  child: Column(
+                    crossAxisAlignment:CrossAxisAlignment.center,
+                    children: [
                           Text(
                             'Aliviando as dores',
                             style: TextStyle(
@@ -180,14 +180,21 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
 
                           SizedBox(height: 4),
 
-                          Text('Asista aos vídeos!',
+                          Text('Assita aos vídeos!',
                           style: TextStyle(
                             fontSize: 15, 
                             color: Color.fromARGB(255, 117, 117, 117))
                           ),
 
+                          SizedBox(height: 12),
+
                           ElevatedButton(
-                            onPressed: (){}, 
+                            onPressed: (){
+                               Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => AliviaDor()),
+                        );
+                            }, 
                              style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 255, 255, 255),
                             ),
@@ -198,10 +205,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                               ),
                             ),
                             ),
-                        ],
-                    ),
                   ],
-
                 ),
                 ),
                 ),
