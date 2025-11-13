@@ -124,9 +124,31 @@ class _CadastroPageState extends State<CadastroPage>{
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'exemplo: aaaabbb@hotmail.com',
+                      hintText: 'Exemplo: aaaabbb@hotmail.com',
                       border: OutlineInputBorder(),
                     )
+                  ),
+                  Padding(
+                    padding: EdgeInsetsGeometry.all(15),
+                    child: Text('Senha para cadastro', style: TextStyle(fontSize: 18))
+                  
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Exemplo: SeNh!a513',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsGeometry.all(15),
+                    child: Text('Confirmação de senha', style: TextStyle(fontSize: 18))
+                  
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Senha',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                   const SizedBox(height: 15),
                   Padding(
