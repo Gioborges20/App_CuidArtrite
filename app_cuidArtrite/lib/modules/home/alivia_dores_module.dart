@@ -1,4 +1,4 @@
-import 'package:app_osteoartrite/modules/aliviaDores_page.dart';
+import 'package:app_osteoartrite/modules/alivia_dores_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AliviaDorModule extends Module{

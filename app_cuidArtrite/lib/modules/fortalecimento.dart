@@ -1,15 +1,13 @@
-
-
 import 'package:flutter/material.dart';
 
-class AliviaDor extends StatefulWidget{
-  const AliviaDor ({super.key});
+class FortalecimentoJoelho extends StatefulWidget{
+  const FortalecimentoJoelho ({super.key});
 
   @override
-  State<AliviaDor> createState() => _TelaAliviaDor();
+  State<FortalecimentoJoelho> createState() => _FortaleceJoelho();
 }
 
-class _TelaAliviaDor extends State<AliviaDor>{
+class _FortaleceJoelho extends State<FortalecimentoJoelho>{
   @override 
   Widget build(BuildContext context){
     return Scaffold(
