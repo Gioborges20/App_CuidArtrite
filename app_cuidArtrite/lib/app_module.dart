@@ -5,8 +5,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 class AppModule extends Module {
   @override
   void routes(RouteManager r) {
-    r.module('/', module: LoginModule()); // Rota inicial (padrão)
-    r.module('/login', module: LoginModule());
+    r.module('/', module: LoginModule());
+    r.module('/Login', module: LoginModule());
     r.module('/cadastro', module: CadastroModule());
   }
 }
