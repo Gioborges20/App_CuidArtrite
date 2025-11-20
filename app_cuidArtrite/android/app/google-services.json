@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "701265587614",
+    "project_id": "cuidartrite-be0d8",
+    "storage_bucket": "cuidartrite-be0d8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701265587614:android:c65d3ba79c580b5cb4ba8f",
+        "android_client_info": {
+          "package_name": "com.example.app_osteoartrite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjykVbVKi58GZosEb42OhTQZTDakO19wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
