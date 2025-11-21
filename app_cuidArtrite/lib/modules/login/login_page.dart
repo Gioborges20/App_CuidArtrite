@@ -83,7 +83,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      try {
+                        await AuthService().login(
+                          emailController.text.trim(),
+                          senhaController.text.trim(),
+                        );
+                      } catch (e) {
+                        print("Erro ao fazer login: $e");   // Colocar logs usando dependencies
+                      }
                       Navigator.push(
                         context,
                          MaterialPageRoute(builder: (context) => TelaPrincipalPage()),
@@ -104,15 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   TextButton(
-                    onPressed:() async{
-                      try {
-                        await AuthService().login(
-                          emailController.text.trim(),
-                          senhaController.text.trim(),
-                        );
-                      } catch (e) {
-                        print("Erro ao fazer login: $e");   // Colocar logs usando dependencies
-                      }
+                    onPressed:() {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => CadastroPage()),
