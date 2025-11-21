@@ -131,4 +131,11 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  void dispose() {
+    emailController.dispose();
+    senhaController.dispose();
+    super.dispose();
+  }
+
 }
