@@ -1,4 +1,4 @@
-import 'package:app_osteoartrite/modules/Fortalecimento.dart';
+import 'package:app_osteoartrite/modules/fortalecimento/fortalecimento_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class FortalecimentoModule extends Module{

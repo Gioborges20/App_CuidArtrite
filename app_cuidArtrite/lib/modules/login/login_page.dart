@@ -1,6 +1,7 @@
 import 'package:app_osteoartrite/modules/cadastro/cadastro_page.dart';
 import 'package:app_osteoartrite/modules/home/tela_principal_page.dart' show TelaPrincipalPage;
 import 'package:flutter/material.dart';
+import 'package:app_osteoartrite/shared/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,6 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +104,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   TextButton(
-                    onPressed:(){
+                    onPressed:() async{
+                      try {
+                        await AuthService().login(
+                          emailController.text.trim(),
+                          senhaController.text.trim(),
+                        );
+                      } catch (e) {
+                        print("Erro ao fazer login: $e");   // Colocar logs usando dependencies
+                      }
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => CadastroPage()),

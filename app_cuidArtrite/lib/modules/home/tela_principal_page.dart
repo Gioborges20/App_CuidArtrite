@@ -1,4 +1,4 @@
-import 'package:app_osteoartrite/modules/Fortalecimento.dart';
+import 'package:app_osteoartrite/modules/fortalecimento/fortalecimento_page.dart';
 import 'package:app_osteoartrite/modules/alivia_dores/alivia_dores_page.dart';
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_page.dart';
 import 'package:flutter/material.dart';

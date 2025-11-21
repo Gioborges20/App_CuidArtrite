@@ -1,5 +1,8 @@
 import 'package:app_osteoartrite/modules/login/login_page.dart';
 import 'package:flutter/material.dart';  
+import 'package:app_osteoartrite/shared/services/user_service.dart';
+import 'package:app_osteoartrite/shared/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});
@@ -12,6 +15,12 @@ const List<String>  tipoSexo = <String>['Masculino', 'Feminino', 'Outro'];
 
 class _CadastroPageState extends State<CadastroPage>{
   String? _sexoSelecionado;
+  final nomeController = TextEditingController();
+  final dataNascController = TextEditingController();
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
+  final celularController = TextEditingController();
+  final prefAcesController = TextEditingController();
 
   @override
   Widget build(BuildContext context){
@@ -61,6 +70,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     child: Text('Nome Completo', style: TextStyle(fontSize: 18))
                   ),
                   TextField(
+                    controller: nomeController,
                     decoration: InputDecoration(
                       hintText: 'Digite seu nome completo',
                       border: OutlineInputBorder()
@@ -72,6 +82,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     child: Text('Data de Nascimento', style: TextStyle(fontSize: 18))
                   ),
                   TextField(
+                    controller: dataNascController,
                     decoration: InputDecoration(
                       hintText: 'DD/MM/AAAA',
                       border: OutlineInputBorder(),
@@ -82,7 +93,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     padding: EdgeInsets.fromLTRB(15, 15, 15, 8),
                     child: Text('Sexo', style: TextStyle(fontSize: 18))
                   ), 
-                  DropdownButtonFormField<String>(
+                  DropdownButtonFormField<String>(  // Colocar validação
                     initialValue: _sexoSelecionado,
                     decoration: InputDecoration(hintText:'Selecione seu sexo', border: OutlineInputBorder()),
                     items: tipoSexo.map<DropdownMenuItem<String>>((String value){
@@ -103,6 +114,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     child: Text('Telefone', style: TextStyle(fontSize: 18))
                   ),
                   TextFormField(
+                    controller: celularController,
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                     hintText: '(99) 99999-9999',
@@ -123,6 +135,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     child: Text('Email', style: TextStyle(fontSize: 18)),
                   ),
                   TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: 'Exemplo: aaaabbb@hotmail.com',
                       border: OutlineInputBorder(),
@@ -134,6 +147,8 @@ class _CadastroPageState extends State<CadastroPage>{
                   
                   ),
                   TextField(
+                    controller: senhaController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Exemplo: SeNh!a513',
                       border: OutlineInputBorder(),
@@ -145,6 +160,7 @@ class _CadastroPageState extends State<CadastroPage>{
                   
                   ),
                   TextField(
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Senha',
                       border: OutlineInputBorder(),
@@ -156,6 +172,7 @@ class _CadastroPageState extends State<CadastroPage>{
                     child: Text('Preferências de acessibilidade', style: TextStyle(fontSize: 18),)
                   ),
                   TextField(
+                    controller: prefAcesController,
                     decoration: InputDecoration(
                       hintText: 'Descreva suas preferências de acessibilidade',
                       border: OutlineInputBorder(),
@@ -163,11 +180,32 @@ class _CadastroPageState extends State<CadastroPage>{
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                         MaterialPageRoute(builder: (context) => LoginPage()),
+                    onPressed: () async{
+                      try {
+                        await AuthService().registrar(
+                          emailController.text.trim(),
+                          senhaController.text.trim(),
                         );
+
+                        final uid = FirebaseAuth.instance.currentUser!.uid;
+
+                        await UserService().saveDadosUsuario(
+                          uid: uid,
+                          nome: nomeController.text.trim(),
+                          dataNasc: dataNascController.text.trim(),
+                          email: emailController.text.trim(),
+                          celular: celularController.text.trim(),
+                          sexo: _sexoSelecionado!,  // Colocar validação pro usuário (nao pode ser null)
+                          prefAces: prefAcesController.text.trim(),
+                        );
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      } catch (e) {
+                        print("Erro ao cadastrar: $e"); // Colocar logs usando dependencies
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF13574C),
@@ -192,6 +230,16 @@ class _CadastroPageState extends State<CadastroPage>{
       ),
     ),)
     );
+  }
+
+  void dispose() {
+    nomeController.dispose();
+    dataNascController.dispose();
+    emailController.dispose();
+    senhaController.dispose();
+    celularController.dispose();
+    prefAcesController.dispose();
+    super.dispose();
   }
 
 }
