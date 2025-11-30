@@ -232,6 +232,7 @@ class _CadastroPageState extends State<CadastroPage>{
     );
   }
 
+@override
   void dispose() {
     nomeController.dispose();
     dataNascController.dispose();

@@ -12,7 +12,7 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-       title: const Text('CuidArtrite',
+       title: const Text('Fortalecimento',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 255, 255, 255),
@@ -30,12 +30,57 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
     ),
     body: SingleChildScrollView(
       child: Center(
-        child: Column(
-          children: [
-          ]
-        )
-        )
-    )
+          child: Container(
+            width: 350,
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.black26),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 6,
+                  offset: Offset(0, 3),
+                )
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
+                const Text(
+                  "Fortalecer sua articulação é o primeiro\n"
+                  "passo para quebrar o ciclo da dor e da\n"
+                  "rigidez causada pela osteoartrite.\n"
+                  "Vamos começar?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+
+                const SizedBox(height: 20),
+
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(178, 12, 74, 74),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.black26),
+                  ),
+                  child: const Text(
+                    "Que tal um alongamento,\n"
+                    "como os que estão nos\n"
+                    "vídeos abaixo?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
