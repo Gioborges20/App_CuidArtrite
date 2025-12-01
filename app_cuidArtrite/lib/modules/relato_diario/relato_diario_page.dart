@@ -498,7 +498,6 @@ class _RelatoDiario extends State<RelatoDiaPage> {
                 mostrarErro();
                 return;
               }
-               Modular.to.pushNamed('/relato_resultado');
 
               try {
                 await relatoService.saveRelatos(
@@ -519,6 +518,7 @@ class _RelatoDiario extends State<RelatoDiaPage> {
                   perguntas.clear();
                   paginaIndex = 0;
                 });
+                Modular.to.pushNamed('/relato_resultado');
               } catch (e) {
                 if (!mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
