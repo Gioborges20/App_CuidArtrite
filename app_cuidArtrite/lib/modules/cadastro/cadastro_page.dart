@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:app_osteoartrite/shared/services/user_service.dart';
 import 'package:app_osteoartrite/shared/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+ import 'dart:developer';
 
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});
@@ -203,8 +204,8 @@ class _CadastroPageState extends State<CadastroPage>{
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         );
-                      } catch (e) {
-                        print("Erro ao cadastrar: $e"); // Colocar logs usando dependencies
+                      } catch (e, stackTrace) {
+                        log("Erro ao cadastrar: $e", name: "CadastroPage", error: e, stackTrace: stackTrace);
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -232,7 +233,7 @@ class _CadastroPageState extends State<CadastroPage>{
     );
   }
 
-@override
+  @override
   void dispose() {
     nomeController.dispose();
     dataNascController.dispose();
