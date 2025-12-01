@@ -6,8 +6,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 class AppModule extends Module {
   @override
   void routes(RouteManager r) {
-    r.module('/', module: TelaPrincipalModule());
+    r.module('/', module: LoginModule());
     r.module('/Login', module: LoginModule());
     r.module('/cadastro', module: CadastroModule());
+    r.module('/tela_principal', module: TelaPrincipalModule());
   }
 }

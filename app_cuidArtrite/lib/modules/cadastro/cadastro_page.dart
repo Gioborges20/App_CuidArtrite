@@ -1,8 +1,10 @@
 import 'package:app_osteoartrite/modules/login/login_page.dart';
-import 'package:flutter/material.dart';  
+import 'package:flutter/material.dart'; 
+import 'package:show_hide_password/show_hide_password.dart'; 
 import 'package:app_osteoartrite/shared/services/user_service.dart';
 import 'package:app_osteoartrite/shared/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer';
 
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});
@@ -19,6 +21,7 @@ class _CadastroPageState extends State<CadastroPage>{
   final dataNascController = TextEditingController();
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
+  final confirmarSenhaController = TextEditingController();
   final celularController = TextEditingController();
   final prefAcesController = TextEditingController();
 
@@ -146,25 +149,34 @@ class _CadastroPageState extends State<CadastroPage>{
                     child: Text('Senha para cadastro', style: TextStyle(fontSize: 18))
                   
                   ),
-                  TextField(
-                    controller: senhaController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Exemplo: SeNh!a513',
-                      border: OutlineInputBorder(),
-                    ),
+                  ShowHidePassword(
+                    passwordField: (bool hidePassword) {
+                      return TextField(
+                        controller: senhaController,
+                        obscureText: hidePassword,
+                        decoration: InputDecoration(
+                          hintText: 'Exemplo: SeNh!a513',
+                          border: OutlineInputBorder(),
+                        ),
+                      );
+                    },
                   ),
                   Padding(
                     padding: EdgeInsetsGeometry.all(15),
                     child: Text('Confirmação de senha', style: TextStyle(fontSize: 18))
                   
                   ),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Senha',
-                      border: OutlineInputBorder(),
-                    ),
+                  ShowHidePassword(
+                    passwordField: (bool hidePassword) {
+                      return TextField(
+                        controller: confirmarSenhaController,
+                        obscureText: hidePassword,
+                        decoration: InputDecoration(
+                          hintText: 'Confirme sua senha',
+                          border: OutlineInputBorder(),
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -181,8 +193,29 @@ class _CadastroPageState extends State<CadastroPage>{
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async{
+                      if(nomeController.text.isEmpty ||
+                         dataNascController.text.isEmpty ||
+                         emailController.text.isEmpty ||
+                         senhaController.text.isEmpty ||
+                         confirmarSenhaController.text.isEmpty ||
+                         celularController.text.isEmpty ||
+                         _sexoSelecionado == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Por favor, preencha todos os campos!')),
+                        );
+                        return;
+                      }
+
+                      // Verificação das senhas
+                      if (senhaController.text.trim() != confirmarSenhaController.text.trim()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('As senhas não coincidem!')),
+                        );
+                        return;
+                      }
+
                       try {
-                        await AuthService().registrar(
+                        await AuthService.instance.registrar(
                           emailController.text.trim(),
                           senhaController.text.trim(),
                         );
@@ -195,16 +228,17 @@ class _CadastroPageState extends State<CadastroPage>{
                           dataNasc: dataNascController.text.trim(),
                           email: emailController.text.trim(),
                           celular: celularController.text.trim(),
-                          sexo: _sexoSelecionado!,  // Colocar validação pro usuário (nao pode ser null)
+                          sexo: _sexoSelecionado!,
                           prefAces: prefAcesController.text.trim(),
                         );
+
 
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         );
-                      } catch (e) {
-                        print("Erro ao cadastrar: $e"); // Colocar logs usando dependencies
+                      } catch (e, stackTrace) {
+                        log("Erro ao cadastrar: $e", name: "CadastroPage", error: e, stackTrace: stackTrace);
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -232,11 +266,13 @@ class _CadastroPageState extends State<CadastroPage>{
     );
   }
 
+  @override
   void dispose() {
     nomeController.dispose();
     dataNascController.dispose();
     emailController.dispose();
     senhaController.dispose();
+    confirmarSenhaController.dispose();
     celularController.dispose();
     prefAcesController.dispose();
     super.dispose();

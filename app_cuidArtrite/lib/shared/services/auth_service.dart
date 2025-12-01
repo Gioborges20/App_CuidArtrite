@@ -1,25 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-final FirebaseAuth _auth = FirebaseAuth.instance;
+  AuthService._internal();
 
-Future registrar(String email, String senha) async {
-return await _auth.createUserWithEmailAndPassword( // Retorna uid do usuário criado
-email: email,
-password: senha,
-);
-}
+  // A única instância da classe
+  static final AuthService instance = AuthService._internal();
+  
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-Future login(String email, String senha) async {
-return await _auth.signInWithEmailAndPassword(
-email: email,
-password: senha,
-);
-}
+  Future registrar(String email, String senha) async {
+    return await _auth.createUserWithEmailAndPassword( // Retorna uid do usuário criado
+    email: email,
+    password: senha,
+    );
+  }
 
-Future logout() async {
-await _auth.signOut(); 
-}
+  Future login(String email, String senha) async {
+    return await _auth.signInWithEmailAndPassword(
+    email: email,
+    password: senha,
+    );
+  }
 
-User? get usuarioAtual => _auth.currentUser; // Retorna o usuário atualmente logado, ou null se não houver
-}
+  Future logout() async {
+    await _auth.signOut(); 
+  }
+
+  User? get usuarioAtual => _auth.currentUser; // Retorna o usuário atualmente logado, ou null se não houver
+  }
