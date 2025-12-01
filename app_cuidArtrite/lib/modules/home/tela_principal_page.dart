@@ -1,6 +1,8 @@
 import 'package:app_osteoartrite/modules/fortalecimento/fortalecimento_page.dart';
 import 'package:app_osteoartrite/modules/alivia_dores/alivia_dores_page.dart';
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_page.dart';
+import 'package:app_osteoartrite/modules/relato_diario/relato_diario_service.dart';
+import 'package:app_osteoartrite/shared/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class TelaPrincipalPage extends StatefulWidget {
@@ -86,7 +88,26 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                         const SizedBox(height: 16),
                         Center(
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              final usuarioId = AuthService.instance.usuarioAtual!.uid;
+                              final relatoService = RelatoDiarioService();
+
+                              // Verifica se já enviou hoje
+                              final jaEnviado = await relatoService.relatoEnviadoHoje(usuarioId);
+
+                              if (jaEnviado) {
+                                if (!mounted) return;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("Você já enviou um relato hoje."),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return; // bloqueia navegação
+                              }
+
+                              if (!mounted) return;
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => RelatoDiaPage())
