@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 
 class RelatoDiaPage extends StatefulWidget {
   const RelatoDiaPage({super.key});
@@ -493,7 +495,7 @@ class _RelatoDiario extends State<RelatoDiaPage> {
                 mostrarErro();
                 return;
               }
-
+               Modular.to.pushNamed('/relato_resultado');
             }),
           ],
         ),
