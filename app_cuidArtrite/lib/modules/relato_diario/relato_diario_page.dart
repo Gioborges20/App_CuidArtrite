@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:app_osteoartrite/modules/relato_diario/relato_diario_service.dart';
+import 'package:app_osteoartrite/shared/services/auth_service.dart';
 
 class RelatoDiaPage extends StatefulWidget {
   const RelatoDiaPage({super.key});
@@ -11,6 +13,7 @@ class _RelatoDiario extends State<RelatoDiaPage> {
   int paginaIndex = 0;
 
   final Map<String, int?> perguntas = {};
+  final relatoService = RelatoDiarioService();
 
   // Função que verifica se as perguntas foram respondidas de acordo com o id da questao
   bool paginaRespondida() {
@@ -488,12 +491,40 @@ class _RelatoDiario extends State<RelatoDiaPage> {
             botao("Voltar", () {
               setState(() => paginaIndex--);
             }),
-            botao("Finalizar", () {
+            botao("Finalizar", () async {
               if (!paginaRespondida()) {
                 mostrarErro();
                 return;
               }
 
+              try {
+                await relatoService.saveRelatos(
+                  usuarioID: AuthService.instance.usuarioAtual!.uid,
+                  respostas: perguntas,
+                );
+
+                if (!mounted) return;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Respostas salvas com sucesso!"),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+
+                setState(() {   // limpar o formulário
+                  perguntas.clear();
+                  paginaIndex = 0;
+                });
+              } catch (e) {
+                if (!mounted) return;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Erro ao salvar respostas: $e"),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
             }),
           ],
         ),
