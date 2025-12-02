@@ -57,7 +57,7 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
                   "rigidez causada pela osteoartrite.\n"
                   "Vamos começar?",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 16, fontWeight: FontWeight.bold),
                 ),
 
                 const SizedBox(height: 20),
@@ -66,7 +66,7 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
                   padding: const EdgeInsets.all(16),
                   width: 300,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(178, 12, 74, 74),
+                    color: Color.fromARGB(255, 50, 165, 180),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.black26),
                   ),
@@ -74,7 +74,7 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
                     "Que tal um alongamento,\n"
                     "como os que estão nos vídeos abaixo?",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
 

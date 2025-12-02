@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 class AliviaDor extends StatefulWidget {
