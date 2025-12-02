@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_service.dart';
 import 'package:app_osteoartrite/shared/services/auth_service.dart';
 
@@ -102,7 +101,6 @@ class _RelatoDiario extends State<RelatoDiaPage> {
       ),
     );
   }
-
 
   Widget perguntasDor() {
     return Column(
@@ -514,7 +512,8 @@ class _RelatoDiario extends State<RelatoDiaPage> {
                   ),
                 );
 
-                setState(() {   // limpar o formulário
+                setState(() {
+                  // limpar o formulário
                   perguntas.clear();
                   paginaIndex = 0;
                 });
@@ -579,11 +578,26 @@ class _RelatoDiario extends State<RelatoDiaPage> {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
-        leading: const Padding(
-          padding: EdgeInsets.all(8),
-          child: Image(image: AssetImage('assets/logo.png'), width: 30),
-        ),
         backgroundColor: const Color(0xFF13574C),
+        leading: Padding(
+          padding: const EdgeInsets.all(8),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/tela_principal');
+            },
+            child: Image.asset('assets/logo.png', width: 30),
+          ),
+        ),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            iconSize: 32,
+            onPressed: () {
+              Modular.to.pushNamed('/usuario/');
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
