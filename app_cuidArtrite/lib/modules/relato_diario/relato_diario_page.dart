@@ -579,16 +579,25 @@ class _RelatoDiario extends State<RelatoDiaPage> {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFF13574C),
-
         leading: Padding(
           padding: const EdgeInsets.all(8),
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/tela_principal'); 
+              Navigator.pushNamed(context, '/tela_principal');
             },
             child: Image.asset('assets/logo.png', width: 30),
           ),
         ),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            iconSize: 32,
+            onPressed: () {
+              Modular.to.pushNamed('/usuario/');
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
