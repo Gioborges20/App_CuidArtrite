@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_service.dart';
 import 'package:app_osteoartrite/shared/services/auth_service.dart';
 
