@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 /*import 'package:http/http.dart' as http; // Pacote para acessar a internet
 import 'package:app_osteoartrite/modules/video_card.dart';*/
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 class AliviaDor extends StatefulWidget {
