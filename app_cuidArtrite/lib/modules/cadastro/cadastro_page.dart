@@ -239,6 +239,9 @@ class _CadastroPageState extends State<CadastroPage>{
                         );
                       } catch (e, stackTrace) {
                         log("Erro ao cadastrar: $e", name: "CadastroPage", error: e, stackTrace: stackTrace);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Erro ao cadastrar. Tente novamente.')),
+                        );
                       }
                     },
                     style: ElevatedButton.styleFrom(
