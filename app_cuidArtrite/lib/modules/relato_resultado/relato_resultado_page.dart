@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class RelatoResultadoPage extends StatelessWidget {
   const RelatoResultadoPage({super.key});
@@ -14,16 +15,25 @@ class RelatoResultadoPage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFF13574C),
-
         leading: Padding(
           padding: const EdgeInsets.all(8),
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/tela_principal'); 
+              Navigator.pushNamed(context, '/tela_principal');
             },
             child: Image.asset('assets/logo.png', width: 30),
           ),
         ),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            iconSize: 32,
+            onPressed: () {
+              Modular.to.pushNamed('/usuario/');
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(

@@ -4,6 +4,7 @@ import 'package:app_osteoartrite/modules/relato_diario/relato_diario_page.dart';
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_service.dart';
 import 'package:app_osteoartrite/shared/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class TelaPrincipalPage extends StatefulWidget {
   const TelaPrincipalPage({super.key});
@@ -19,20 +20,29 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
       appBar: AppBar(
         title: const Text(
           'CuidArtrite',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
+        backgroundColor: const Color(0xFF13574C),
         leading: Padding(
-          padding: EdgeInsets.all(8),
-          child: Image(
-            image: AssetImage('assets/logo.png'),
-            width: 30,
+          padding: const EdgeInsets.all(8),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/tela_principal');
+            },
+            child: Image.asset('assets/logo.png', width: 30),
           ),
         ),
-        backgroundColor: Color(0xFF13574C),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            iconSize: 32,
+            onPressed: () {
+              Modular.to.pushNamed('/usuario/');
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -80,6 +90,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                           child: Text(
                             'Perguntas sobre sua dor e intensidade.',
                             textAlign: TextAlign.center,
+
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -91,17 +102,21 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                         Center(
                           child: ElevatedButton(
                             onPressed: () async {
-                              final usuarioId = AuthService.instance.usuarioAtual!.uid;
+                              final usuarioId =
+                                  AuthService.instance.usuarioAtual!.uid;
                               final relatoService = RelatoDiarioService();
 
                               // Verifica se já enviou hoje
-                              final jaEnviado = await relatoService.relatoEnviadoHoje(usuarioId);
+                              final jaEnviado = await relatoService
+                                  .relatoEnviadoHoje(usuarioId);
 
                               if (jaEnviado) {
                                 if (!mounted) return;
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text("Você já enviou um relato hoje."),
+                                    content: Text(
+                                      "Você já enviou um relato hoje.",
+                                    ),
                                     backgroundColor: Colors.red,
                                   ),
                                 );
@@ -112,17 +127,22 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
 
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => RelatoDiaPage())
-                                );
+                                MaterialPageRoute(
+                                  builder: (context) => RelatoDiaPage(),
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:  Color(0xFF13574C),
+                              backgroundColor: Color.fromARGB(
+                                255,
+                                255,
+                                255,
+                                255,
+                              ),
                             ),
                             child: Text(
                               'Iniciar Relato',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
+                              style: TextStyle(color: Color(0xFF13574C)),
                             ),
                           ),
                         ),
@@ -155,8 +175,10 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                             topRight: Radius.circular(8.0),
                           ),
                         ),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 16,
+                        ),
                         child: Center(
                           child: Text(
                             'Exerça Práticas Físicas!',
@@ -175,12 +197,14 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(
-                                    'A prática de exercícios físicos pode ser numa grande aliada contra a osteoartrite.'
-                                    '\nAo executá-las, fortalecemos nossas articulações e criamos uma “barreira” contra lesões.',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 18))),
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                'A prática de exercícios físicos pode ser numa grande aliada contra a osteoartrite.'
+                                '\nAo executá-las, fortalecemos nossas articulações e criamos uma “barreira” contra lesões.',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -198,7 +222,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                   ),
                   width: 400,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center, 
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: 80,
@@ -207,7 +231,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                       ),
                       SizedBox(width: 16),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, 
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Aliviando as dores',
@@ -218,27 +242,34 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                             ),
                           ),
                           SizedBox(height: 4),
-                          Text('Assita aos vídeos!',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(255, 117, 117, 117))),
+                          Text(
+                            'Assita aos vídeos!',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 117, 117, 117),
+                            ),
+                          ),
                           SizedBox(height: 12),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AliviaDor()),
+                                  builder: (context) => AliviaDor(),
+                                ),
                               );
                             },
-                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                 Color(0xFF13574C)            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(
+                                255,
+                                255,
+                                255,
+                                255,
+                              ),
+                            ),
                             child: Text(
                               'Iniciar',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
+                              style: TextStyle(color: Color(0xFF13574C)),
                             ),
                           ),
                         ],
@@ -257,16 +288,18 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                   ),
                   width: 400,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center, 
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: 80,
                         height: 80,
-                        child: Image.asset('assets/iconFortalecimentoJoelho.png'),
+                        child: Image.asset(
+                          'assets/iconFortalecimentoJoelho.png',
+                        ),
                       ),
                       SizedBox(width: 16),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, 
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Fortalecendo a articulação',
@@ -277,27 +310,34 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                             ),
                           ),
                           SizedBox(height: 4),
-                          Text('Assita aos vídeos!',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(255, 117, 117, 117))),
+                          Text(
+                            'Assita aos vídeos!',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 117, 117, 117),
+                            ),
+                          ),
                           SizedBox(height: 12),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => FortalecimentoJoelho()),
+                                  builder: (context) => FortalecimentoJoelho(),
+                                ),
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                 Color(0xFF13574C)            ),
+                              backgroundColor: Color.fromARGB(
+                                255,
+                                255,
+                                255,
+                                255,
+                              ),
+                            ),
                             child: Text(
                               'Iniciar',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
+                              style: TextStyle(color: Color(0xFF13574C)),
                             ),
                           ),
                         ],
