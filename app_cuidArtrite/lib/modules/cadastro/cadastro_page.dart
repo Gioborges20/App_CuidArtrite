@@ -232,7 +232,8 @@ class _CadastroPageState extends State<CadastroPage>{
                           prefAces: prefAcesController.text.trim(),
                         );
 
-
+                        if (!mounted) return;
+                        
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
