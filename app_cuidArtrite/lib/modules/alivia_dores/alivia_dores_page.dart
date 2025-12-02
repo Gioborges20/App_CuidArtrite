@@ -1,3 +1,4 @@
+import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 /*import 'package:http/http.dart' as http; // Pacote para acessar a internet
@@ -36,24 +37,18 @@ class _TelaAliviaDor extends State<AliviaDor> {
         centerTitle: true,
         backgroundColor: const Color(0xFF13574C),
         leading: Padding(
-          padding: const EdgeInsets.all(8),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/tela_principal');
-            },
-            child: Image.asset('assets/logo.png', width: 30),
-          ),
-        ),
-
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person, color: Colors.white),
-            iconSize: 32,
-            onPressed: () {
-              Modular.to.pushNamed('/usuario/');
-            },
-          ),
-        ],
+          padding: EdgeInsets.all(8),
+          child: IconButton(
+            iconSize: 40,
+            padding: EdgeInsets.zero,
+            icon: Image.asset('assets/logo.png'),
+            onPressed:() => Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (context) => TelaPrincipalPage(),
+              ),
+            ),
+        ),),
+        backgroundColor: Color(0xFF13574C),
       ),
       body: SingleChildScrollView(
         child: Center(

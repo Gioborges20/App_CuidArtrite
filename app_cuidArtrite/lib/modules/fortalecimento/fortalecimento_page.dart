@@ -1,3 +1,4 @@
+import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -21,13 +22,17 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho> {
         centerTitle: true,
         backgroundColor: const Color(0xFF13574C),
         leading: Padding(
-          padding: const EdgeInsets.all(8),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/tela_principal');
-            },
-            child: Image.asset('assets/logo.png', width: 30),
-          ),
+          padding: EdgeInsets.all(8),
+          child: IconButton(
+            iconSize: 40,
+            padding: EdgeInsets.zero,
+            icon: Image.asset('assets/logo.png'),
+            onPressed:() => Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (context) => TelaPrincipalPage(),
+              ),
+            ),
+        ),
         ),
 
         actions: [
