@@ -52,14 +52,14 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                 padding: EdgeInsets.only(top: 24), // Margem superior
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 122, 181, 196),
+                    color: Color.fromARGB(159, 249, 252, 73),
                     border: Border.all(
                       color: const Color.fromARGB(23, 100, 100, 100),
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  width: 300,
+                  width: 400,
                   child: Padding(
                     padding: EdgeInsets.all(25),
                     child: Column(
@@ -72,9 +72,9 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                             'Relato Diário',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
-                              color: const Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 71, 71, 71),
                             ),
                           ),
                         ),
@@ -90,7 +90,12 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                           child: Text(
                             'Perguntas sobre sua dor e intensidade.',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
+
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 71, 71, 71),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -150,7 +155,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                 padding: EdgeInsets.only(top: 24),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 220, 220),
+                    color: Color.fromARGB(121, 181, 243, 214),
                     border: Border.all(
                       color: const Color.fromARGB(23, 100, 100, 100),
                       width: 1.0,
@@ -164,7 +169,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(197, 170, 169, 169),
+                          color: Color.fromARGB(197, 33, 129, 100),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
@@ -212,7 +217,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                 child: Container(
                   padding: EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(73, 155, 154, 154),
+                    color: Color.fromARGB(121, 181, 243, 214),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   width: 400,
@@ -278,7 +283,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                 child: Container(
                   padding: EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(73, 155, 154, 154),
+                    color: Color.fromARGB(121, 181, 243, 214),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   width: 400,
