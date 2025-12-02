@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RelatoDiarioService {
   final CollectionReference relatosRef = FirebaseFirestore.instance.collection('relatos_diarios');
+  final FirebaseFirestore _fire = FirebaseFirestore.instance;
 
   Future<void> saveRelatos({
     required String usuarioID,
@@ -50,4 +51,19 @@ class RelatoDiarioService {
             ultimoRelato.month == hoje.month &&
             ultimoRelato.day == hoje.day;
   }
+
+  Future<List<Map<String, dynamic>>> getRelatosUltimos7Dias(String uid) async {
+  final agora = DateTime.now();
+  final limite = agora.subtract(const Duration(days: 7));
+
+  final snap = await _fire
+      .collection("relatos_diarios")
+      .doc(uid)
+      .collection("dias")
+      .where("data", isGreaterThanOrEqualTo: limite)
+      .orderBy("data")
+      .get();
+
+  return snap.docs.map((d) => d.data()).toList();
+}
 }

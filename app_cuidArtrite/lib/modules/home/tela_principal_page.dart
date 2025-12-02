@@ -3,6 +3,8 @@ import 'package:app_osteoartrite/modules/alivia_dores/alivia_dores_page.dart';
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_page.dart';
 import 'package:app_osteoartrite/modules/relato_diario/relato_diario_service.dart';
 import 'package:app_osteoartrite/shared/services/auth_service.dart';
+import 'package:app_osteoartrite/modules/relato_diario/relato_diario_controller.dart';
+import 'package:app_osteoartrite/modules/stat_item.dart';
 import 'package:flutter/material.dart';
 
 class TelaPrincipalPage extends StatefulWidget {
@@ -13,6 +15,24 @@ class TelaPrincipalPage extends StatefulWidget {
 }
 
 class _TelaPrincipal extends State<TelaPrincipalPage> {
+  final controller = RelatoDiarioController();
+  
+  List<StatItem> dorSemana = [];
+  bool loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    carregarDados();
+  }
+
+  Future<void> carregarDados() async {
+    dorSemana = await controller.carregarGraficoDaSemana("dor_caminhar");
+    setState(() => loading = false);
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
