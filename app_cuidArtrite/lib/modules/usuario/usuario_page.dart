@@ -161,7 +161,7 @@ class _UsuarioPageState extends State<UsuarioPage> {
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 child: const Text("Excluir conta"),
@@ -172,14 +172,14 @@ class _UsuarioPageState extends State<UsuarioPage> {
               width: 150,
               child: ElevatedButton(
                 onPressed: () {
-                  
+
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF13574C),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 child: const Text("Sair da conta"),
