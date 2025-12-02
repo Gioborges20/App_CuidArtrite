@@ -13,11 +13,17 @@ class RelatoResultadoPage extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
-        leading: const Padding(
-          padding: EdgeInsets.all(8),
-          child: Image(image: AssetImage('assets/logo.png'), width: 30),
-        ),
         backgroundColor: const Color(0xFF13574C),
+
+        leading: Padding(
+          padding: const EdgeInsets.all(8),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/tela_principal'); 
+            },
+            child: Image.asset('assets/logo.png', width: 30),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(

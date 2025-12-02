@@ -102,7 +102,6 @@ class _RelatoDiario extends State<RelatoDiaPage> {
     );
   }
 
-
   Widget perguntasDor() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -513,7 +512,8 @@ class _RelatoDiario extends State<RelatoDiaPage> {
                   ),
                 );
 
-                setState(() {   // limpar o formulário
+                setState(() {
+                  // limpar o formulário
                   perguntas.clear();
                   paginaIndex = 0;
                 });
@@ -578,11 +578,17 @@ class _RelatoDiario extends State<RelatoDiaPage> {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
-        leading: const Padding(
-          padding: EdgeInsets.all(8),
-          child: Image(image: AssetImage('assets/logo.png'), width: 30),
-        ),
         backgroundColor: const Color(0xFF13574C),
+
+        leading: Padding(
+          padding: const EdgeInsets.all(8),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/tela_principal'); 
+            },
+            child: Image.asset('assets/logo.png', width: 30),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
