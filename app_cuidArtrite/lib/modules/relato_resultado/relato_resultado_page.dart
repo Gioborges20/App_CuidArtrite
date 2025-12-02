@@ -1,3 +1,4 @@
+import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
 
@@ -13,9 +14,17 @@ class RelatoResultadoPage extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
-        leading: const Padding(
+        leading: Padding(
           padding: EdgeInsets.all(8),
-          child: Image(image: AssetImage('assets/logo.png'), width: 30),
+           child: IconButton(
+            iconSize: 40,
+            padding: EdgeInsets.zero,
+            icon: Image.asset('assets/logo.png'),
+            onPressed:() => Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (context) => TelaPrincipalPage(),
+              ),
+            ),),
         ),
         backgroundColor: const Color(0xFF13574C),
       ),
