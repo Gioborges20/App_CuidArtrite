@@ -1,4 +1,3 @@
-import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 /*import 'package:http/http.dart' as http; // Pacote para acessar a internet
