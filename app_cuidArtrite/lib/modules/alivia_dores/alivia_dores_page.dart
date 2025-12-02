@@ -1,7 +1,7 @@
 import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:flutter/material.dart';
-/*import 'package:http/http.dart' as http; // Pacote para acessar a internet
-import 'package:app_osteoartrite/modules/video_card.dart';*/
+import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 class AliviaDor extends StatefulWidget {
@@ -12,6 +12,18 @@ class AliviaDor extends StatefulWidget {
 }
 
 class _TelaAliviaDor extends State<AliviaDor> {
+  Widget buildVideoCard(String title, String url) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: ListTile(
+        title: Text(title),
+        trailing: Icon(Icons.play_circle_fill),
+        onTap: () {
+          // Ação ao clicar no card (ex: abrir o vídeo)
+        },
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,8 +109,21 @@ class _TelaAliviaDor extends State<AliviaDor> {
                         ),
                       ),
                       Container(
-
-                      )
+                        margin: EdgeInsets.only(top: 20),
+                        child: Column(
+                          children: [
+                            YoutubeThumbAndPlayer(youtubeUrl:'https://www.youtube.com/watch?v=vB4koF8uElY'),
+                            const SizedBox(height: 16),
+                            YoutubeThumbAndPlayer(youtubeUrl:'https://www.youtube.com/watch?v=zuoHttAIv9o'),
+                            const SizedBox(height: 16),
+                            YoutubeThumbAndPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=C5Al9dJ-bQU'),
+                            const SizedBox(height: 16),
+                            YoutubeThumbAndPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=o7jK8tBGNVQ'),
+                            const SizedBox(height: 16),
+                            YoutubeThumbAndPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=7ZQB9Smmu9E'),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
