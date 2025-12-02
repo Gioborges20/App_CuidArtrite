@@ -27,17 +27,6 @@ class RelatoResultadoPage extends StatelessWidget {
               ),
             ),),
         ),
-        backgroundColor: const Color(0xFF13574C),
-        leading: Padding(
-          padding: const EdgeInsets.all(8),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/tela_principal');
-            },
-            child: Image.asset('assets/logo.png', width: 30),
-          ),
-        ),
-
         actions: [
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),

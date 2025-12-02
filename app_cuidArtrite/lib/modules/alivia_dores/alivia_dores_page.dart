@@ -5,7 +5,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:app_osteoartrite/modules/video_card.dart';*/
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
 
-
 class AliviaDor extends StatefulWidget {
   const AliviaDor({super.key});
 
@@ -26,6 +25,7 @@ class _TelaAliviaDor extends State<AliviaDor> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +42,12 @@ class _TelaAliviaDor extends State<AliviaDor> {
             iconSize: 40,
             padding: EdgeInsets.zero,
             icon: Image.asset('assets/logo.png'),
-            onPressed:() => Navigator.push(context, 
-              MaterialPageRoute(
-                builder: (context) => TelaPrincipalPage(),
-              ),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TelaPrincipalPage()),
             ),
-        ),),
-        backgroundColor: Color(0xFF13574C),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -109,15 +108,30 @@ class _TelaAliviaDor extends State<AliviaDor> {
                         margin: EdgeInsets.only(top: 20),
                         child: Column(
                           children: [
-                            YoutubeThumbAndPlayer(youtubeUrl:'https://www.youtube.com/watch?v=vB4koF8uElY'),
+                            YoutubeThumbAndPlayer(
+                              youtubeUrl:
+                                  'https://www.youtube.com/watch?v=vB4koF8uElY',
+                            ),
                             const SizedBox(height: 16),
-                            YoutubeThumbAndPlayer(youtubeUrl:'https://www.youtube.com/watch?v=zuoHttAIv9o'),
+                            YoutubeThumbAndPlayer(
+                              youtubeUrl:
+                                  'https://www.youtube.com/watch?v=zuoHttAIv9o',
+                            ),
                             const SizedBox(height: 16),
-                            YoutubeThumbAndPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=C5Al9dJ-bQU'),
+                            YoutubeThumbAndPlayer(
+                              youtubeUrl:
+                                  'https://www.youtube.com/watch?v=C5Al9dJ-bQU',
+                            ),
                             const SizedBox(height: 16),
-                            YoutubeThumbAndPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=o7jK8tBGNVQ'),
+                            YoutubeThumbAndPlayer(
+                              youtubeUrl:
+                                  'https://www.youtube.com/watch?v=o7jK8tBGNVQ',
+                            ),
                             const SizedBox(height: 16),
-                            YoutubeThumbAndPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=7ZQB9Smmu9E'),
+                            YoutubeThumbAndPlayer(
+                              youtubeUrl:
+                                  'https://www.youtube.com/watch?v=7ZQB9Smmu9E',
+                            ),
                           ],
                         ),
                       ),

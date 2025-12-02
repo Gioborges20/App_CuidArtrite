@@ -126,7 +126,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                             ),
                             child: const Text(
                               'Iniciar Relato',
-                              style: TextStyle(color: Color(0xFF13574C)),
+                              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                             ),
                           ),
                         ),
@@ -154,9 +154,6 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                   child: const GraficoSemanalCard(),
                 ),
               ),
-              // ----------------------------
-
-              // --- CARD 2: PRÁTICAS FÍSICAS ---
               Padding(
                 padding: const EdgeInsets.only(top: 24),
                 child: Container(
@@ -217,7 +214,6 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                 ),
               ),
 
-              // --- CARD 3: ALIVIA DORES ---
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
@@ -265,7 +261,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                                 backgroundColor: const Color(0xFF13574C)),
                             child: const Text(
                               'Iniciar',
-                              style: TextStyle(color: Color(0xFF13574C)),
+                              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                             ),
                           ),
                         ],
@@ -324,7 +320,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                                 backgroundColor: const Color(0xFF13574C)),
                             child: const Text(
                               'Iniciar',
-                              style: TextStyle(color: Color(0xFF13574C)),
+                              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                             ),
                           ),
                         ],
