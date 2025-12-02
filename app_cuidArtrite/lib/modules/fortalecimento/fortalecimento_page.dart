@@ -1,26 +1,26 @@
 import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class FortalecimentoJoelho extends StatefulWidget{
-  const FortalecimentoJoelho ({super.key});
+class FortalecimentoJoelho extends StatefulWidget {
+  const FortalecimentoJoelho({super.key});
 
   @override
   State<FortalecimentoJoelho> createState() => _FortaleceJoelho();
 }
 
-class _FortaleceJoelho extends State<FortalecimentoJoelho>{
-  @override 
-  Widget build(BuildContext context){
+class _FortaleceJoelho extends State<FortalecimentoJoelho> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       title: const Text('Fortalecimento',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
-      ),
-      centerTitle: true,
+        title: const Text(
+          'Fortalecimento',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF13574C),
         leading: Padding(
           padding: EdgeInsets.all(8),
           child: IconButton(
@@ -34,10 +34,19 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
             ),
         ),
         ),
-        backgroundColor: Color(0xFF13574C),
-    ),
-    body: SingleChildScrollView(
-      child: Center(
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            iconSize: 32,
+            onPressed: () {
+              Modular.to.pushNamed('/usuario/');
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Center(
           child: Container(
             width: 350,
             padding: const EdgeInsets.all(10),
@@ -51,13 +60,12 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
                   color: Colors.black12,
                   blurRadius: 6,
                   offset: Offset(0, 3),
-                )
+                ),
               ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
                 const Text(
                   "Fortalecer sua articulação é o primeiro\n"
                   "passo para quebrar o ciclo da dor e da\n"
@@ -88,19 +96,22 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
                 const SizedBox(height: 20),
 
                 YoutubeThumbAndPlayer(
-                  youtubeUrl: "https://youtu.be/i3dNhtvTJQ4?si=G5qRzMj8HFZ8XNdP"
+                  youtubeUrl:
+                      "https://youtu.be/i3dNhtvTJQ4?si=G5qRzMj8HFZ8XNdP",
                 ),
 
                 SizedBox(height: 16),
 
                 YoutubeThumbAndPlayer(
-                  youtubeUrl: "https://youtu.be/GF6TPjQMHJA?si=5HKwQbeffa93vqnm"
+                  youtubeUrl:
+                      "https://youtu.be/GF6TPjQMHJA?si=5HKwQbeffa93vqnm",
                 ),
 
                 SizedBox(height: 16),
 
                 YoutubeThumbAndPlayer(
-                  youtubeUrl: "https://youtu.be/vA3oj3mzGRs?si=HPB-CCU21SWnVlJO"
+                  youtubeUrl:
+                      "https://youtu.be/vA3oj3mzGRs?si=HPB-CCU21SWnVlJO",
                 ),
 
                 const SizedBox(height: 30),
@@ -129,7 +140,8 @@ class _FortaleceJoelho extends State<FortalecimentoJoelho>{
                     border: Border.all(color: Colors.black26),
                   ),
                   child: YoutubeThumbAndPlayer(
-                    youtubeUrl: "https://youtu.be/m0DMYFve9u8?si=NVg7YtnTivU5jOqL"
+                    youtubeUrl:
+                        "https://youtu.be/m0DMYFve9u8?si=NVg7YtnTivU5jOqL",
                   ),
                 ),
               ],

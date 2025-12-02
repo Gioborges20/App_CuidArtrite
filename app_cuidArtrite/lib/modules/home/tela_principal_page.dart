@@ -23,10 +23,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
       appBar: AppBar(
         title: const Text(
           'CuidArtrite',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         leading: const Padding(
@@ -84,6 +81,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                           child: Text(
                             'Perguntas sobre sua dor e intensidade.',
                             textAlign: TextAlign.center,
+
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -128,9 +126,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                             ),
                             child: const Text(
                               'Iniciar Relato',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
+                              style: TextStyle(color: Color(0xFF13574C)),
                             ),
                           ),
                         ),
@@ -205,12 +201,14 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(
-                                    'A prática de exercícios físicos pode ser numa grande aliada contra a osteoartrite.'
-                                    '\nAo executá-las, fortalecemos nossas articulações e criamos uma “barreira” contra lesões.',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 18))),
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                'A prática de exercícios físicos pode ser numa grande aliada contra a osteoartrite.'
+                                '\nAo executá-las, fortalecemos nossas articulações e criamos uma “barreira” contra lesões.',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -267,9 +265,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                                 backgroundColor: const Color(0xFF13574C)),
                             child: const Text(
                               'Iniciar',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
+                              style: TextStyle(color: Color(0xFF13574C)),
                             ),
                           ),
                         ],
@@ -328,9 +324,7 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
                                 backgroundColor: const Color(0xFF13574C)),
                             child: const Text(
                               'Iniciar',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
+                              style: TextStyle(color: Color(0xFF13574C)),
                             ),
                           ),
                         ],
@@ -347,9 +341,6 @@ class _TelaPrincipal extends State<TelaPrincipalPage> {
   }
 }
 
-// =========================================================
-// WIDGET DO GRÁFICO (Mantido igual, apenas para referência)
-// =========================================================
 class GraficoSemanalCard extends StatefulWidget {
   const GraficoSemanalCard({super.key});
 

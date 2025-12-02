@@ -219,27 +219,53 @@ class _CadastroPageState extends State<CadastroPage>{
                           emailController.text.trim(),
                           senhaController.text.trim(),
                         );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Erro ao registrar: $e')),
+                        );
+                        return;
+                      }
 
                         final uid = FirebaseAuth.instance.currentUser!.uid;
 
-                        await UserService().saveDadosUsuario(
-                          uid: uid,
-                          nome: nomeController.text.trim(),
-                          dataNasc: dataNascController.text.trim(),
-                          email: emailController.text.trim(),
-                          celular: celularController.text.trim(),
-                          sexo: _sexoSelecionado!,
-                          prefAces: prefAcesController.text.trim(),
+                        try {
+                          await AuthService.instance.verificarEmail();
+                        } catch (e) {
+                          log("Erro ao enviar email de verificação: $e", name: "CadastroPage", error: e);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Erro ao enviar email de verificação. Tente novamente.')),
+                          );
+                          return;
+                        }
+
+                        try {
+                          await UserService().saveDadosUsuario(
+                            uid: uid,
+                            nome: nomeController.text.trim(),
+                            dataNasc: dataNascController.text.trim(),
+                            email: emailController.text.trim(),
+                            celular: celularController.text.trim(),
+                            sexo: _sexoSelecionado!,
+                            prefAces: prefAcesController.text.trim(),
+                          );
+                        } catch (e, stackTrace) {
+                          log("Erro ao salvar dados do usuário: $e", name: "CadastroPage", error: e, stackTrace: stackTrace);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Erro ao salvar dados do usuário. Tente novamente.')),
+                          );
+                          return;
+                        }
+
+                        if (!mounted) return;
+                        
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Cadastro realizado com sucesso! Verifique seu e-mail para ativar a conta.')),
                         );
-
-
+                        
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         );
-                      } catch (e, stackTrace) {
-                        log("Erro ao cadastrar: $e", name: "CadastroPage", error: e, stackTrace: stackTrace);
-                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF13574C),

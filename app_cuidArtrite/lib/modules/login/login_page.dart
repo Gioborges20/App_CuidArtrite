@@ -31,12 +31,13 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: true,
         backgroundColor: Color(0xFF13574C),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            width: 450.0,
-            height: 160.0,
-            child: Image(image: AssetImage('assets/logo.png')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              width: 450.0,
+              height: 160.0,
+              child: Image(image: AssetImage('assets/logo.png')),
           ),
           Padding(
             padding: EdgeInsets.all(16),
@@ -46,7 +47,9 @@ class _LoginPageState extends State<LoginPage> {
               textAlign: TextAlign.center,
             ),
           ),
+
           const SizedBox(height: 22),
+
           Container(
             decoration: BoxDecoration(
               border: Border.all(
@@ -56,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(8.0),
             ),
             width: 330,
-            height: 380,
+            padding: EdgeInsets.all(16),
             child: Padding(
               padding: EdgeInsets.all(25),
               child: Column(
@@ -118,6 +121,16 @@ class _LoginPageState extends State<LoginPage> {
                             senhaController.text.trim(),
                           );
 
+                          bool verificado = await AuthService.instance.emailFoiVerificado();
+
+                          if (!verificado) {
+                            await AuthService.instance.logout();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Por favor, verifique seu e-mail antes de fazer login.')),
+                            );
+                            return;
+                          }
+
                           if (!mounted) return;
 
                           Navigator.push(
@@ -136,6 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Erro ao fazer login: ${e.code}')),
                             );
+                            return;
                           }
                         }
                       } catch (e, stackTrace) {
@@ -167,12 +181,45 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),
                       decoration: TextDecoration.underline,
                       )),
-                    )
+                    ),
+                  TextButton(
+                    onPressed: () async {
+                      try {
+                        if (emailController.text.isEmpty) {
+                          if (!mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Por favor, insira seu e-mail para redefinir a senha.')),
+                          );
+                          return; // interrompe fluxo
+                        }
+
+                        await AuthService.instance.esqueciSenha(emailController.text.trim());
+
+                        if (!mounted) return;
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('E-mail de redefinição de senha enviado. Não esqueça de verificar a caixa de spam.')),
+                        );
+                      } catch (e) {
+                        log("Erro ao solicitar redefinição de senha: $e", name: "LoginPage", error: e);
+                        if (!mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Erro ao solicitar redefinição de senha. Tente novamente.')),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      'Esqueci minha senha',
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),
+                      decoration: TextDecoration.underline,
+                      )),
+                  ),
                 ],
               ),
             ),
           ),
         ],
+      ),
       ),
     );
   }

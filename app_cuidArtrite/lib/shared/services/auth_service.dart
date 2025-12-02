@@ -22,6 +22,20 @@ class AuthService {
     );
   }
 
+  Future verificarEmail() async {
+    await usuarioAtual?.sendEmailVerification();  
+  }
+
+  // verifica se o email já foi verificado ? = chama o metodo apenas se nao for null ?? = se for null faça isso
+  Future<bool> emailFoiVerificado() async {
+    await usuarioAtual?.reload(); // Recarrega os dados do usuário    
+    return usuarioAtual?.emailVerified ?? false;  // Retorna true se o email foi verificado, false caso contrário
+  }
+
+  Future esqueciSenha(String email) async {
+    await _auth.sendPasswordResetEmail(email: email);
+  } 
+
   Future logout() async {
     await _auth.signOut(); 
   }

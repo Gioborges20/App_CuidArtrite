@@ -1,5 +1,8 @@
 import 'package:app_osteoartrite/modules/home/tela_principal_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+/*import 'package:http/http.dart' as http; // Pacote para acessar a internet
+import 'package:app_osteoartrite/modules/video_card.dart';*/
 import 'package:app_osteoartrite/modules/widgets/youtube_player.dart';
 
 
@@ -28,13 +31,11 @@ class _TelaAliviaDor extends State<AliviaDor> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'CuidArtrite',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
+          'Aliviando as dores',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
+        backgroundColor: const Color(0xFF13574C),
         leading: Padding(
           padding: EdgeInsets.all(8),
           child: IconButton(
@@ -58,10 +59,7 @@ class _TelaAliviaDor extends State<AliviaDor> {
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1.0,
-                    ),
+                    border: Border.all(color: Colors.black, width: 1.0),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   width: 400,
@@ -73,16 +71,16 @@ class _TelaAliviaDor extends State<AliviaDor> {
                         'Sempre que precisar, acesse essa aba e acesse o vídeo que mais lhe agradar!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.black, 
+                          color: Colors.black,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
 
-                      SizedBox(height: 20), 
+                      SizedBox(height: 20),
 
                       Container(
-                        width: double.infinity, 
+                        width: double.infinity,
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Color.fromARGB(255, 50, 165, 180),
@@ -100,12 +98,13 @@ class _TelaAliviaDor extends State<AliviaDor> {
                           'Que tal um alongamento, como os que estão nos vídeos abaixo?',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.white, 
+                            color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
+                      Container(),
                       Container(
                         margin: EdgeInsets.only(top: 20),
                         child: Column(
@@ -126,7 +125,6 @@ class _TelaAliviaDor extends State<AliviaDor> {
                   ),
                 ),
               ),
-             
             ],
           ),
         ),
